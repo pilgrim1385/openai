@@ -19,7 +19,9 @@ abstract class BaseApiUrlBuilder {
     final usedEndpoint = _handleEndpointsStarting(endpoint);
 
     String apiLink = "$baseUrl";
-    apiLink += "/$version";
+    if (version.isNotEmpty) {
+      apiLink += "/$version";
+    }
     apiLink += "$usedEndpoint";
 
     if (id != null) {

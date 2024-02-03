@@ -24,10 +24,18 @@ abstract class OpenAIConfig {
   /// {@endtemplate}
   static String? _baseUrl;
 
+  /// This is version in API url
+  /// If set to null, it will use default version
+  /// If set to empty string, it will remove from url. This is useful when use baseUrl like Cloudflare AI Gateway
+  static String? _version;
+
   /// {@template openai_config_version}
   /// This is the version of the API.
   /// {@endtemplate}
-  static String get version => OpenAIStrings.version;
+  @internal
+  static String get version {
+    return _version ?? OpenAIStrings.version;
+  }
 
   /// {@macro openai_config_base_url}
   @internal
@@ -39,5 +47,10 @@ abstract class OpenAIConfig {
   static set baseUrl(String? baseUrl) {
     _baseUrl = baseUrl;
     OpenAILogger.logBaseUrl(_baseUrl);
+  }
+
+  @internal
+  static set version(String? version) {
+    _version = version;
   }
 }

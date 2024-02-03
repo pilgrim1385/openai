@@ -116,6 +116,10 @@ final class OpenAI extends OpenAIClientBase {
     OpenAIConfig.baseUrl = baseUrl;
   }
 
+  static set version(String version) {
+    OpenAIConfig.version = version;
+  }
+
   /// If you have multiple organizations, you can set it's id with this.
   /// once this is set, it will be used in all the requests to the OpenAI API.
   ///
